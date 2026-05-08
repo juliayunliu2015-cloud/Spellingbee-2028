@@ -6,390 +6,377 @@
     <title>Kingdom of Words - Onboarding</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Poppins', sans-serif;
-            color: #333;
-            height: 100vh;
+            background: #ede8fa;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1000px;
-            width: 95%;
-            height: 95vh;
+            max-width: 900px;
+            width: 100%;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
+            max-height: 95vh;
         }
 
-        /* Header Section */
+        /* HERO BANNER */
         .header-section {
             background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCr7AYPvVeqUPBshUWTIWJ2iXIQ-8K8woQJVGZzn3gXZOsD91x8eOwU5k1T9eDH0b8uekjykG9rQWN9kNidIOCSsd7p06J8IQ-11QKISWUKktStRsvX6OMpfJvCsTRYpo0Od6Lo3PzYt_R-4ub7Qf8h2gF39R8zVmMyA__pbMkAN2-H2q9T7SHEMfm5ULKJ1bkUS8YXaE2PlMU-5ep8QL2i4x-7ScztKYKjlG8ZguBjXW60PcBOj9SX88vAxsPyEuuZpbcOYlkE3Uc');
             /* background-size: cover; */
-            background-position: left 25%;
-            padding: 20px;
-            border-radius: 8px;
+            background-position: left 20%;
+            padding: 28px 20px;
             text-align: center;
-            margin-bottom: 15px;
-            border: 3px solid rgba(168, 85, 247, 0.3);
+            position: relative;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
         .header-section h1 {
             color: white;
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 900;
             margin: 0;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 4px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
         }
 
         .header-subtitle {
-            color: white;
+            color: #fff9e6;
             font-size: 0.95rem;
             font-weight: 600;
             margin: 8px 0 0 0;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 4px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
         }
 
         .header-tagline {
             display: none;
         }
 
-        /* Screen Management */
-        .screen {
-            display: none;
-            width: 100%;
+        /* MAIN CONTENT */
+        .main-content {
+            background: #ede8fa;
+            padding: 22px 20px 28px;
             flex: 1;
-            padding: 15px 15px;
-            animation: fadeIn 0.6s ease-in;
-            overflow: hidden auto;
+            overflow-y: auto;
         }
 
-        .screen.active {
-            display: flex;
-            flex-direction: column;
+        /* WELCOME SECTION */
+        .welcome-block {
+            text-align: center;
+            margin-bottom: 18px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .welcome-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #7c3aed;
+            margin-bottom: 4px;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .welcome-sub {
+            font-size: 0.95rem;
+            color: #6d28d9;
+            line-height: 1.4;
         }
 
-        /* Home Screen - REMOVED */
-        .home-screen {
-            display: none;
-        }
-
-        /* Lexi Screen - REMOVED */
-        .lexi-screen {
-            display: none;
-        }
-
-        .start-button {
-            display: none;
-        }
-
-        .continue-button {
-            display: none;
-        }
-
-        /* Map Screen */
-        .map-screen {
-            justify-content: flex-start;
-            padding-top: 10px;
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-        }
-
+        /* PROFESSOR BOX */
         .lexi-intro {
+            background: #fff;
+            border-radius: 14px;
+            border: 1.5px solid #d8cfee;
+            padding: 14px 16px;
             display: flex;
-            align-items: flex-start;
             gap: 12px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 15px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            align-items: flex-start;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .lexi-intro-emoji {
-            font-size: 2rem;
+            font-size: 2.2rem;
             flex-shrink: 0;
             margin-top: 2px;
         }
 
         .lexi-intro-text p {
-            font-size: 0.85rem;
-            color: #333;
-            line-height: 1.4;
+            font-size: 0.82rem;
+            color: #4a4a6a;
+            line-height: 1.5;
             margin: 0;
         }
 
         .lexi-intro-text p:first-child {
             font-weight: 700;
-            color: #667eea;
+            color: #7c3aed;
             margin-bottom: 6px;
         }
 
+        /* CARDS GRID */
         .kingdoms-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            padding: 0 5px;
-            flex: 1;
-            align-content: flex-start;
-            max-height: 100%;
-            overflow-y: auto;
-        }
-
-        .kingdoms-grid::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .kingdoms-grid::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .kingdoms-grid::-webkit-scrollbar-thumb {
-            background: rgba(102, 126, 234, 0.3);
-            border-radius: 2px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            padding: 0;
         }
 
         .kingdom-card {
-            background: white;
-            border-radius: 12px;
-            padding: 12px 10px;
+            background: #fff;
+            border-radius: 14px;
+            border: 1.5px solid #e0d9f5;
+            padding: 14px 12px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.15s, box-shadow 0.15s;
             position: relative;
             overflow: hidden;
         }
 
         .kingdom-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .kingdom-card.locked {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .kingdom-card.locked:hover {
-            transform: translateY(0);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.12);
+            border-color: #a78bfa;
         }
 
         .lock-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.8rem;
-            background: rgba(255, 0, 0, 0.7);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: none;
         }
 
         .kingdom-emoji {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 8px;
         }
 
         .kingdom-name {
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: #333;
-            margin-bottom: 4px;
-            line-height: 1.2;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #3b0a8f;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
         .kingdom-difficulty {
-            font-size: 0.9rem;
-            margin-bottom: 6px;
+            font-size: 0.75rem;
             font-weight: 600;
+            color: #6d28d9;
+            margin-bottom: 6px;
         }
 
         .kingdom-description {
-            color: #666;
-            font-size: 0.8rem;
-            line-height: 1.3;
+            color: #6b6b8a;
+            font-size: 0.73rem;
+            line-height: 1.35;
+            flex: 1;
             margin-bottom: 8px;
         }
 
         .kingdom-words-count {
-            font-size: 0.7rem;
-            background: #f0f0f0;
-            padding: 5px 8px;
-            border-radius: 15px;
-            color: #666;
+            font-size: 0.72rem;
+            background: #f0ebff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: #6d28d9;
+            font-weight: 600;
             display: inline-block;
         }
 
-        /* Level Confirmation Screen */
+        /* CONFIRMATION SCREEN */
         .confirmation-screen {
+            display: none;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, #ede8fa 0%, #ddd4f0 100%);
+        }
+
+        .confirmation-screen.active {
+            display: flex;
         }
 
         .confirmation-box {
             background: white;
-            border-radius: 20px;
-            padding: 30px 25px;
+            border-radius: 16px;
+            padding: 24px 20px;
             text-align: center;
-            max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            animation: slideIn 0.6s ease-out;
+            max-width: 500px;
+            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.1);
         }
 
         .confirmation-emoji {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 12px;
         }
 
         .confirmation-box h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 8px;
+            font-size: 1.3rem;
+            color: #3b0a8f;
+            margin-bottom: 6px;
+            font-weight: 700;
         }
 
         .confirmation-box p {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #6b6b8a;
+            line-height: 1.4;
+            margin-bottom: 14px;
         }
 
         .confirmation-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
         .stat-item {
-            background: #f5f5f5;
+            background: #f5ebff;
             padding: 10px;
             border-radius: 8px;
         }
 
         .stat-label {
-            font-size: 0.8rem;
-            color: #999;
+            font-size: 0.75rem;
+            color: #9370db;
             margin-bottom: 3px;
+            font-weight: 600;
         }
 
         .stat-value {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #667eea;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #7c3aed;
         }
 
         .button-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
             color: white;
             border: none;
-            padding: 11px 20px;
-            font-size: 0.9rem;
-            border-radius: 50px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 900;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            font-weight: 700;
+            transition: all 0.2s ease;
+            font-family: 'Poppins', sans-serif;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
         }
 
         .btn-secondary {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            padding: 9px 20px;
-            font-size: 0.9rem;
-            border-radius: 50px;
+            color: #7c3aed;
+            border: 1.5px solid #c4b5fd;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 900;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            font-family: 'Poppins', sans-serif;
         }
 
         .btn-secondary:hover {
-            background: #f5f5f5;
+            background: #f5ebff;
+            border-color: #7c3aed;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .screen {
+            animation: fadeIn 0.4s ease-in;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .container {
-                height: 100vh;
+                max-height: 100vh;
                 border-radius: 0;
             }
 
             .header-section {
-                padding: 12px 15px;
+                padding: 18px 15px;
+                min-height: 120px;
             }
 
             .header-section h1 {
-                font-size: 1.5rem;
-                margin-bottom: 2px;
+                font-size: 1.4rem;
             }
 
             .header-subtitle {
                 font-size: 0.85rem;
             }
 
-            .header-tagline {
-                font-size: 0.75rem;
+            .main-content {
+                padding: 16px 14px;
             }
 
-            .screen {
-                padding: 12px 10px;
+            .welcome-name {
+                font-size: 1rem;
+            }
+
+            .welcome-sub {
+                font-size: 0.9rem;
             }
 
             .kingdoms-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .kingdom-card {
+                padding: 12px 10px 10px;
+            }
+
+            .kingdom-emoji {
+                font-size: 1.8rem;
+                margin-bottom: 6px;
+            }
+
+            .kingdom-name {
+                font-size: 0.75rem;
+            }
+
+            .kingdom-description {
+                font-size: 0.7rem;
             }
 
             .button-group {
@@ -397,7 +384,8 @@
             }
 
             .confirmation-box {
-                padding: 25px 15px;
+                max-width: 90%;
+                padding: 20px 16px;
             }
         }
     </style>
@@ -411,10 +399,10 @@
         </div>
 
         <!-- Kingdom Map -->
-        <div class="screen map-screen active" id="mapScreen">
-            <div style="text-align: center; margin-bottom: 12px; padding: 0 15px;">
-                <p style="font-size: 0.95rem; color: #5b21a8; font-weight: 600; margin: 0 0 8px 0;">Welcome, Vivian!</p>
-                <p style="color: #6b21a8; margin: 0;">Restore the magic to the kingdom by mastering spelling. Choose your starting level!</p>
+        <div class="main-content">
+            <div style="text-align: center; margin-bottom: 14px;">
+                <p style="font-size: 1.1rem; color: #7c3aed; font-weight: 700; margin-bottom: 4px;">Welcome, Vivian!</p>
+                <p style="color: #6d28d9; font-size: 0.95rem;">Restore the magic to the kingdom by mastering spelling. Choose your starting level!</p>
             </div>
             <div class="lexi-intro">
                 <div class="lexi-intro-emoji">🧙‍♂️</div>
@@ -427,7 +415,7 @@
         </div>
 
         <!-- Level Confirmation -->
-        <div class="screen confirmation-screen" id="confirmationScreen">
+        <div class="confirmation-screen" id="confirmationScreen">
             <div class="confirmation-box">
                 <div class="confirmation-emoji" id="confirmEmoji">🏘️</div>
                 <h3 id="confirmTitle">The Village of First Words</h3>
@@ -436,7 +424,7 @@
                 <div class="confirmation-stats">
                     <div class="stat-item">
                         <div class="stat-label">Words</div>
-                        <div class="stat-value" id="confirmWordCount">80</div>
+                        <div class="stat-value" id="confirmWordCount">33</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-label">Difficulty</div>
@@ -509,16 +497,9 @@
 
         let selectedKingdom = null;
 
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
-        }
-
         function goToMap() {
             renderKingdoms();
-            showScreen('mapScreen');
+            document.getElementById('confirmationScreen').classList.remove('active');
         }
 
         function renderKingdoms() {
@@ -560,7 +541,6 @@
         document.getElementById('homeScreen')?.remove();
         document.getElementById('lexiScreen')?.remove();
         renderKingdoms();
-        showScreen('mapScreen');
     </script>
 </body>
 </html>
