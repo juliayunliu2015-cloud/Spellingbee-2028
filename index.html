@@ -37,28 +37,34 @@
 
         /* Header Section */
         .header-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 20px;
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCr7AYPvVeqUPBshUWTIWJ2iXIQ-8K8woQJVGZzn3gXZOsD91x8eOwU5k1T9eDH0b8uekjykG9rQWN9kNidIOCSsd7p06J8IQ-11QKISWUKktStRsvX6OMpfJvCsTRYpo0Od6Lo3PzYt_R-4ub7Qf8h2gF39R8zVmMyA__pbMkAN2-H2q9T7SHEMfm5ULKJ1bkUS8YXaE2PlMU-5ep8QL2i4x-7ScztKYKjlG8ZguBjXW60PcBOj9SX88vAxsPyEuuZpbcOYlkE3Uc');
+            /* background-size: cover; */
+            background-position: left 25%;
+            padding: 20px;
+            border-radius: 8px;
             text-align: center;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            border: 3px solid rgba(168, 85, 247, 0.3);
         }
 
         .header-section h1 {
+            color: white;
             font-size: 1.8rem;
-            margin-bottom: 3px;
-            font-weight: 900;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 4px rgba(0, 0, 0, 0.9);
         }
 
         .header-subtitle {
-            font-size: 0.9rem;
-            margin-bottom: 2px;
-            opacity: 0.95;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 8px 0 0 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 4px rgba(0, 0, 0, 0.9);
         }
 
         .header-tagline {
-            font-size: 0.8rem;
-            opacity: 0.85;
+            display: none;
         }
 
         /* Screen Management */
@@ -232,15 +238,14 @@
         }
 
         .kingdom-difficulty {
-            font-size: 0.75rem;
-            color: #999;
+            font-size: 0.9rem;
             margin-bottom: 6px;
             font-weight: 600;
         }
 
         .kingdom-description {
-            font-size: 0.7rem;
             color: #666;
+            font-size: 0.8rem;
             line-height: 1.3;
             margin-bottom: 8px;
         }
@@ -401,13 +406,16 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header-section" id="headerSection">
-            <h1>🧙‍♂️ Kingdom of Words</h1>
-            <p class="header-subtitle">Welcome, Word Explorer!</p>
-            <p class="header-tagline">Restore the magic to the kingdom by mastering spelling. Choose your starting level!</p>
+            <h1>GO FOR THE GOLD, VIVIAN! ✨</h1>
+            <p class="header-subtitle">Every word you master today is a step closer to the 2027 Trophy! 🏆✨</p>
         </div>
 
         <!-- Kingdom Map -->
         <div class="screen map-screen active" id="mapScreen">
+            <div style="text-align: center; margin-bottom: 12px; padding: 0 15px;">
+                <p style="font-size: 0.95rem; color: #5b21a8; font-weight: 600; margin: 0 0 8px 0;">Welcome, Vivian!</p>
+                <p style="color: #6b21a8; margin: 0;">Restore the magic to the kingdom by mastering spelling. Choose your starting level!</p>
+            </div>
             <div class="lexi-intro">
                 <div class="lexi-intro-emoji">🧙‍♂️</div>
                 <div class="lexi-intro-text">
