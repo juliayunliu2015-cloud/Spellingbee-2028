@@ -435,7 +435,7 @@
             </select>
 
             <div id="group-options" style="display: none;">
-                <label for="group-number">Select Group (1-13):</label>
+                <label for="group-number">Select Group (1-12):</label>
                 <select id="group-number" onchange="handleExamModeChange()">
                     <option value="">-- Select --</option>
                 </select>
@@ -448,7 +448,7 @@
         <div id="learn" class="tab-content">
             <h2>📖 Alphabetical Study Groups</h2>
             
-            <label for="learn-group">Select Learning Group (1-13):</label>
+            <label for="learn-group">Select Learning Group (1-12):</label>
             <select id="learn-group" onchange="loadLearningGroup()">
                 <option value="">-- Select --</option>
             </select>
@@ -472,7 +472,7 @@
             attempts: 0,
             lastResult: null,
             scores: {}, // date: { correct: n, total: n }
-            incorrectWords: new Set(),
+            incorrectWordsCount: {}, // { word: mistakeCount, ... }
             randomPool: null, // Random 33-word pool from kingdom selection
             selectedKingdom: null
         };
@@ -496,14 +496,14 @@
             if (saved) {
                 const data = JSON.parse(saved);
                 state.scores = data.scores || {};
-                state.incorrectWords = new Set(data.incorrectWords || []);
+                state.incorrectWordsCount = data.incorrectWordsCount || {};
             }
         }
 
         function saveState() {
             localStorage.setItem('spellingBeeState', JSON.stringify({
                 scores: state.scores,
-                incorrectWords: Array.from(state.incorrectWords)
+                incorrectWordsCount: state.incorrectWordsCount
             }));
         }
 
@@ -584,7 +584,7 @@
             } else if (state.currentExamMode === 'all') {
                 pool = state.words.groups.flatMap(g => g.words);
             } else if (state.currentExamMode === 'incorrect') {
-                pool = state.words.groups.flatMap(g => g.words).filter(w => state.incorrectWords.has(w.word));
+                pool = state.words.groups.flatMap(g => g.words).filter(w => state.incorrectWordsCount.hasOwnProperty(w.word));
             }
 
             if (pool.length === 0) {
@@ -774,7 +774,13 @@
                 };
             } else {
                 state.scores[today].total++;
-                state.incorrectWords.add(state.currentWord.word);
+                // Track incorrect word and increment count
+                const word = state.currentWord.word;
+                if (state.incorrectWordsCount.hasOwnProperty(word)) {
+                    state.incorrectWordsCount[word]++;
+                } else {
+                    state.incorrectWordsCount[word] = 1;
+                }
                 state.lastResult = {
                     is_correct: false,
                     word: state.currentWord.word,
