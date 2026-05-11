@@ -511,6 +511,14 @@
             try {
                 const response = await fetch('words.json');
                 state.words = await response.json();
+                
+                // Add group property to each word
+                state.words.groups.forEach(group => {
+                    group.words.forEach(word => {
+                        word.group = group.group;
+                    });
+                });
+                
                 initializeUI();
             } catch (error) {
                 console.error('Error loading words:', error);
